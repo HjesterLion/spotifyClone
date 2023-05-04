@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faGuitar, faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faGuitar, faHome, faMusic, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-painel-esquerdo',
@@ -8,12 +8,19 @@ import { faGuitar, faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class PainelEsquerdoComponent implements OnInit{
 
+  menuSelecionado = 'Home'
+
   homeIcone = faHome;
   pesquisarIcone = faSearch;
   artistaIcon = faGuitar
+  playlistIcone = faMusic
   constructor(){}
 
   ngOnInit(): void{
+
+  }
+  botaoClick(botao:string){
+    this.menuSelecionado = botao
 
   }
 
