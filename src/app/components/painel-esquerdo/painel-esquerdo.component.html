@@ -1,0 +1,24 @@
+<div class="menus flex">
+    <div class="image-container flex flex-center">
+        <img src="assets/img/spotify-logo.png" alt="">
+    </div>
+    <div class="menu-container flex opcoes">
+        <app-botao-menu
+         [descricao]="'Home'"
+         [selecionado]="true"
+         >
+            <fa-icon [icon]="homeIcone"></fa-icon>
+        </app-botao-menu>
+        <app-botao-menu [descricao]="'Pesquisar'">
+            <fa-icon [icon]="pesquisarIcone"></fa-icon>
+        </app-botao-menu>
+        <app-botao-menu [descricao]="'Artistas'">
+            <fa-icon [icon]="artistaIcon"></fa-icon>
+        </app-botao-menu>
+    </div>
+
+</div>
+
+<div class="usuario-info">
+
+</div>
