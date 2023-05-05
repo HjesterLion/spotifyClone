@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { SpotifyConfiguration } from 'src/environments/environment.development';
 import Spotify from 'spotify-web-api-js'
 import { iUsuario } from '../interfaces/iUsuarios';
-import { SpotifyUserParaUsuario } from '../common/spotifyHelper';
+import { SpotifyArtistaParaArtista, SpotifyPLaylistParaPlaylist, SpotifyTrackParaMusica, SpotifyUserParaUsuario } from '../common/spotifyHelper';
+import { iPlaylist } from '../interfaces/iPlaylist';
+import { Router } from '@angular/router';
+import { iArtista } from '../interfaces/iArtista';
+import { iMusica } from '../interfaces/iMusica';
 
 
 @Injectable({
@@ -15,7 +19,9 @@ export class SpotifyServicesService {
 
 
 
-  constructor() {  
+  constructor(
+    private router: Router
+  ) {  
     this.spotifyApi = new Spotify()
    }
   
@@ -60,5 +66,42 @@ export class SpotifyServicesService {
   definirAccessToken(token:string){
     this.spotifyApi.setAccessToken(token)
     localStorage.setItem('token',token)
+  }
+
+  async buscarPlaylistUsuario(offset = 0, limit = 50): Promise<iPlaylist[]>{
+    const playlists = await this.spotifyApi.getUserPlaylists(this.usuario.id,{offset,limit});
+    return playlists.items.map(SpotifyPLaylistParaPlaylist)
+  }
+
+  async buscarTopArtistas( limit = 10):Promise <iArtista[]>{
+    const artistas = await this.spotifyApi.getMyTopArtists({limit})
+    return artistas.items.map(SpotifyArtistaParaArtista)
+
+  }
+  async buscarArtista(id = '6YVMFz59CuY7ngCxTxjpxE'){
+    const artista = await this.spotifyApi.getArtist(id)
+    return artista
+    
+  }
+
+  async buscarMusicas(offset = 0, limit= 50):Promise<iMusica[]>{
+    const musicas = await this.spotifyApi.getMySavedTracks({offset,limit})
+    return musicas.items.map(e => SpotifyTrackParaMusica(e.track))
+  }
+
+  async excecutarMusica(musicaId: string){
+    await this.spotifyApi.queue(musicaId)
+    await this.spotifyApi.skipToNext()
+
+  }
+
+  async obeterMusicaAtual():Promise<iMusica>{
+    const musica = await this.spotifyApi.getMyCurrentPlayingTrack()
+    return SpotifyTrackParaMusica(musica.item)
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/login'])
   }
 }

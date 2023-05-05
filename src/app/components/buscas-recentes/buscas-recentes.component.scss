@@ -1,0 +1,43 @@
+@import '../../../assets/style/variaveis.scss';
+
+:host{
+    input{
+        width: 100%;
+        padding: 10px 5px;
+        border-color: $preto-trasparent-30;
+        border-radius: 8px;
+        font-size: 1rem;
+        outline: none;
+        font-weight: 500;
+
+        &::placeholder{
+            color:$preto-trasparent-30;
+            font-size: .85rem
+        }
+        &:focus, &:active{
+            border-color: $cor-primaria;
+            border-width: 2px;
+        }
+    }
+    .sugestoes{
+        flex-wrap: wrap;
+        
+        span{
+            background-color: white;
+            margin-right: 5px;
+            padding: 5px 10px;
+            color: $pretor-trasparent-70;
+            border:1px solid $preto-trasparent-30;
+            margin: 10px;
+            font-size: .9rem;
+            border-radius: 20px;
+            cursor: pointer;
+
+            &:hover{
+                background-color: rgba($cor-primaria,.5);
+                color: white;
+            }
+
+        }
+    }
+}
