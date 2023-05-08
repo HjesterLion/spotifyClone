@@ -11,6 +11,15 @@ export function SpotifyUserParaUsuario(user: SpotifyApi.CurrentUsersProfileRespo
         imgUrl: user.images.pop()?.url
     }
 }
+export function SpotifySinglePlaylistParaPlaylist(playlist:SpotifyApi.SinglePlaylistResponse):iPlaylist{
+    return{
+        id:playlist.id,
+        nome:playlist.name,
+        imagUrl: playlist.images.shift()?.url,
+        musicas:[]
+    }
+
+}
 
 export function SpotifyPLaylistParaPlaylist(playlist: SpotifyApi.PlaylistObjectSimplified): iPlaylist {
     return {
@@ -18,7 +27,6 @@ export function SpotifyPLaylistParaPlaylist(playlist: SpotifyApi.PlaylistObjectS
         nome: playlist.name,
         imagUrl: playlist.images.pop()?.url
     }
-
 }
 export function SpotifyArtistaParaArtista(spotifyArtista: SpotifyApi.ArtistObjectFull): iArtista {
     return {

@@ -20,7 +20,8 @@
 
         </thead>
         <tbody>
-            <tr *ngFor="let musica of musicas" (click)="executarMusica(musica)" [class.executando]="musica.id == musicaAtual.id">
+            <tr *ngFor="let musica of musicas" (click)="executarMusica(musica)"
+                [class.executando]="musica.id == musicaAtual.id">
                 <td><fa-icon class="play" [icon]="playIcone"></fa-icon></td>
                 <td>{{musica.titulo}}</td>
                 <td>{{obterArtistas(musica)}}</td>
@@ -32,7 +33,6 @@
 
 </div>
 
-    <app-painel-direito class="painel-direito">
+<app-painel-direito class="painel-direito">
 
-    </app-painel-direito>
-    
+</app-painel-direito>

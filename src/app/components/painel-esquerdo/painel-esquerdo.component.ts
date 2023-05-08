@@ -39,4 +39,9 @@ export class PainelEsquerdoComponent implements OnInit{
 
   }
 
+  irParaPlaylist(playlistId:string){
+    this.menuSelecionado = playlistId;
+    this.router.navigateByUrl(`player/lista/playlist/${playlistId}`)
+  }
+
 }

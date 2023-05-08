@@ -31,4 +31,12 @@ export class PlayerService {
   definirMusicaAtual(musica:iMusica){
     this.musicaAtual.next(musica)
   }
+
+  async voltarMusica(){
+    await this.spotifyService.voltarMusica()
+  }
+
+  async proximaMusica(){
+    await this.spotifyService.proximaMusica()
+  }
 }

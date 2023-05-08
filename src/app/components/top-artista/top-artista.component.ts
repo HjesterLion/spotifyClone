@@ -19,16 +19,11 @@ export class TopArtistaComponent implements OnInit {
   ngOnInit(): void {
     this.buscarArtista()
 
-
   }
   async buscarArtista(){
-    // const artistas = await this.spotifyService.buscarTopArtistas(1)
-    const artistas = await this.spotifyService.buscarArtista()
+    const artistas = await this.spotifyService.buscarTopArtistas()
     if(!!artistas){
-      this.artista.id = artistas.id
-      this.artista.nome = artistas.name
-      this.artista.imgUrl = artistas.images.sort((a,b) => a.width - b.width).pop().url
-      // this.artista = artistas.pop();
+      this.artista = artistas.pop();
     }
   }
   
