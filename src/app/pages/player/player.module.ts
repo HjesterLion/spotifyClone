@@ -17,6 +17,8 @@ import { ArtistaItemImagemComponent } from 'src/app/components/artista-item-imag
 import { PlayerCardComponent } from 'src/app/components/player-card/player-card.component';
 import { ListaMusicasComponent } from '../lista-musicas/lista-musicas.component';
 import { BannerComponent } from 'src/app/components/banner/banner.component';
+import { PesquisaComponent } from '../pesquisa/pesquisa.component';
+import { ArtistasComponent } from '../artistas/artistas.component';
 
 
 
@@ -34,7 +36,9 @@ import { BannerComponent } from 'src/app/components/banner/banner.component';
     ArtistaItemImagemComponent,
     PlayerCardComponent,
     ListaMusicasComponent,
-    BannerComponent
+    BannerComponent,
+    PesquisaComponent,
+    ArtistasComponent
   ],
   imports: [
     FormsModule,

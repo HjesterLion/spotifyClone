@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { SpotifyConfiguration } from 'src/environments/environment.development';
 import Spotify from 'spotify-web-api-js'
 import { iUsuario } from '../interfaces/iUsuarios';
-import { SpotifyArtistaParaArtista, SpotifyPLaylistParaPlaylist, SpotifySinglePlaylistParaPlaylist, SpotifyTrackParaMusica, SpotifyUserParaUsuario } from '../common/spotifyHelper';
+import { SpotifyArtistaParaArtista, SpotifyPLaylistParaPlaylist, SpotifyPesquisa, SpotifySinglePlaylistParaPlaylist, SpotifyTrackParaMusica, SpotifyUserParaUsuario } from '../common/spotifyHelper';
 import { iPlaylist } from '../interfaces/iPlaylist';
 import { Router } from '@angular/router';
 import { iArtista } from '../interfaces/iArtista';
 import { iMusica } from '../interfaces/iMusica';
+import { iPesquisa } from '../interfaces/iPesquisa';
 
 
 @Injectable({
@@ -16,8 +17,7 @@ export class SpotifyServicesService {
 
   spotifyApi: Spotify.SpotifyWebApiJs = null;
   usuario:iUsuario ;
-
-
+  pesquisa:iPesquisa 
 
   constructor(
     private router: Router
@@ -86,8 +86,9 @@ export class SpotifyServicesService {
   }
 
   async buscar(busca:string){
-    const resultadoBusca = await this.spotifyApi.search(busca,["album","artist","playlist","track"])
-    console.log(resultadoBusca)
+    const resultadoBusca = await this.spotifyApi.search(busca,["album","artist","playlist"])
+    this.pesquisa = SpotifyPesquisa(resultadoBusca)
+
   }
 
   async buscarMusicas(offset = 0, limit= 50):Promise<iMusica[]>{

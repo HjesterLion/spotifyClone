@@ -51,5 +51,4 @@ export class HomeComponent implements OnInit,OnDestroy {
     this.playerService.definirMusicaAtual(musica)
 
   }
-
 }

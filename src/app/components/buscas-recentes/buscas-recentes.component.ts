@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { SpotifyServicesService } from 'src/app/services/spotify-services.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { SpotifyServicesService } from 'src/app/services/spotify-services.servic
 export class BuscasRecentesComponent implements OnInit {
   pesquisasRecentes = ['']
   campoPesquisa = ''
+
+  @Output() buscaEvent = new EventEmitter() 
   
+  constructor(private spotifyService:SpotifyServicesService,private router:Router){}
   ngOnInit(): void {
     this.tocadosRecente()
   }
@@ -18,6 +22,9 @@ export class BuscasRecentesComponent implements OnInit {
   }
   buscar(){
     this.spotifyService.buscar(this.campoPesquisa)
+    this.campoPesquisa = ''
+    this.buscaEvent.emit()
+    // this.router.navigateByUrl('player/pesquisar')
   }
 
   async tocadosRecente(){
@@ -26,7 +33,6 @@ export class BuscasRecentesComponent implements OnInit {
 
   }
 
-  constructor(private spotifyService:SpotifyServicesService){}
 
   
 }

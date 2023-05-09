@@ -1,5 +1,6 @@
 import { iArtista } from "../interfaces/iArtista";
 import { iMusica } from "../interfaces/iMusica";
+import { iPesquisa } from "../interfaces/iPesquisa";
 import { iPlaylist } from "../interfaces/iPlaylist";
 import { iUsuario } from "../interfaces/iUsuarios";
 import { newMusica } from "./factories";
@@ -66,5 +67,25 @@ export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull)
         })),
         tempo: msParaMinutos(spotifyTrack.duration_ms)
 
+    }
+}
+
+export function SpotifyPesquisa(spotifyPesquisa: SpotifyApi.SearchResponse):iPesquisa{
+    return{
+        album: spotifyPesquisa.albums.items.map(e =>({
+            id:e.id,
+            nome:e.name,
+            imgUrl:e.images.pop()?.url,
+        })),
+        artista: spotifyPesquisa.artists.items.map(e => ({
+            id:e.id,
+            nome:e.name,
+            imgUrl:e.images.pop()?.url,
+        })),
+        playlists: spotifyPesquisa.playlists.items.map(e =>({
+            id:e.id,
+            nome:e.name,
+            imagUrl:e.images.pop()?.url,
+        })),
     }
 }

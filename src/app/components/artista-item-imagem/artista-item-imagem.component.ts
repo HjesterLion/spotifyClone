@@ -10,6 +10,9 @@ export class ArtistaItemImagemComponent implements OnInit {
   @Input()
   imagemSrc = '';
 
+  @Input()
+  selecionado = false
+
   @Output()
   click = new EventEmitter<void>();
 

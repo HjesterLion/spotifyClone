@@ -26,4 +26,9 @@
         text-overflow: ellipsis;
 
     }
+
+    &.selecionado{
+        background-color: $cor-primaria;
+        color: white;
+    }
 }

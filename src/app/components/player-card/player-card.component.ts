@@ -26,7 +26,6 @@ export class PlayerCardComponent implements OnInit,OnDestroy{
   }
   ngOnDestroy(): void {
     this.subs.forEach(sub => sub.unsubscribe())
-    
   }
   
   async obterMusicaTocando(){

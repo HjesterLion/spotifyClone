@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faGuitar, faHome, faMusic, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Subscribable, Subscription } from 'rxjs';
 import { iPlaylist } from 'src/app/interfaces/iPlaylist';
 import { SpotifyServicesService } from 'src/app/services/spotify-services.service';
 
@@ -9,11 +10,13 @@ import { SpotifyServicesService } from 'src/app/services/spotify-services.servic
   templateUrl: './painel-esquerdo.component.html',
   styleUrls: ['./painel-esquerdo.component.scss']
 })
-export class PainelEsquerdoComponent implements OnInit{
+export class PainelEsquerdoComponent implements OnInit, OnDestroy{
 
   menuSelecionado = 'Home'
 
   playlists:iPlaylist[] = []
+  subs:Subscription[]= []
+
 
   homeIcone = faHome;
   pesquisarIcone = faSearch;
@@ -22,16 +25,21 @@ export class PainelEsquerdoComponent implements OnInit{
   
   constructor(
     private router: Router,
-    private spotifyService: SpotifyServicesService
+    private spotifyService: SpotifyServicesService,
+    private activeRoute: ActivatedRoute
   ){}
 
   ngOnInit(): void{
     this.buscarPlaylist()
 
   }
+  ngOnDestroy(): void {
+    this.subs.forEach(sub => sub.unsubscribe())
+    
+  }
   botaoClick(botao:string){
     this.menuSelecionado = botao
-    this.router.navigateByUrl('player/home')
+    this.router.navigateByUrl(`player/${botao.toLocaleLowerCase()}`)
 
   }
 

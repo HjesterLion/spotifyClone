@@ -1,0 +1,42 @@
+<div class="minhas-pesquisas">
+    <span class="titulo-bg mt-4">
+        Pesquisas
+    </span>
+
+    <app-top-artista class="mt-2 d-block"></app-top-artista>
+    
+    <app-buscas-recentes></app-buscas-recentes>
+
+    <div *ngIf="pesquisa && pesquisa.artista">
+        <span class="titulo-bg mt-4">
+            Artistas
+        </span>
+        <div class="teste">
+            <div *ngFor="let artista of pesquisa.artista" class="card mt-4">
+                <img class="imagem" src="{{artista.imgUrl}}" alt="">
+                <span class="mt-2">{{artista.nome}}</span>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div *ngIf="pesquisa && pesquisa.album">
+        <span class="titulo-bg mt-4">
+            Album
+        </span>
+    </div>
+
+
+
+    <div *ngIf="pesquisa && pesquisa.playlists">
+        <span class="titulo-bg mt-4">
+            Playlists
+        </span>
+    </div>
+
+</div>
+
+
+<app-painel-direito class="painel-direito"></app-painel-direito>
