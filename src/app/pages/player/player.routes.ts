@@ -20,7 +20,7 @@ export const PlayerRoutas: Routes = [
             },
             {
                 path:'pesquisar',
-                component:PesquisaComponent
+                component:PesquisaComponent,
             },
             {
                 path:'artistas',

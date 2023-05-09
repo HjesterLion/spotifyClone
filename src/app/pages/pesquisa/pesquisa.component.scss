@@ -3,6 +3,7 @@
 :host{
     display:flex;
     justify-content: space-between;
+    height: 100vh;
 
     ::-webkit-scrollbar{
         width: 7px;
@@ -33,6 +34,8 @@
     .teste{
         display: flex;
         flex-wrap: nowrap;
+        max-width: 60vw;
+        overflow: hidden;
 
         .card{
             display: flex;

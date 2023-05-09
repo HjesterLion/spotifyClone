@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { iPesquisa } from 'src/app/interfaces/iPesquisa';
 import { SpotifyServicesService } from 'src/app/services/spotify-services.service';
 
@@ -11,7 +12,7 @@ export class PesquisaComponent implements OnInit {
 
   pesquisa: iPesquisa
   
-  constructor(private spotifyService: SpotifyServicesService) { }
+  constructor(private spotifyService: SpotifyServicesService,private router:Router) { }
   
   @HostListener('keyup.Enter')
   ngOnInit(): void {
@@ -25,6 +26,11 @@ export class PesquisaComponent implements OnInit {
 
     },2000)
 
+
+  }
+
+  async irParaArtista(artistaId: string){
+    this.router.navigateByUrl(`player/lista/artista/${artistaId}`)
 
   }
 

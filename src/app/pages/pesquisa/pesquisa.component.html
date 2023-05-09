@@ -12,7 +12,7 @@
             Artistas
         </span>
         <div class="teste">
-            <div *ngFor="let artista of pesquisa.artista" class="card mt-4">
+            <div *ngFor="let artista of pesquisa.artista" class="card mt-4" (click)="irParaArtista(artista.id)">
                 <img class="imagem" src="{{artista.imgUrl}}" alt="">
                 <span class="mt-2">{{artista.nome}}</span>
             </div>
