@@ -1,5 +1,5 @@
 <span class="titulo-md">Top 5 Artistas</span>
-    <app-artista-item-imagem class="mt-1"
+    <app-artista-item-imagem class="mt-1" (click)="irParaArtista(artista.id)"
     *ngFor="let artista of artistas"
     [imagemSrc]="artista.imgUrl">
     {{artista.nome}}

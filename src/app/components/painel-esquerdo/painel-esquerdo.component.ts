@@ -19,6 +19,7 @@ export class PainelEsquerdoComponent implements OnInit{
   pesquisarIcone = faSearch;
   artistaIcon = faGuitar
   playlistIcone = faMusic
+  
   constructor(
     private router: Router,
     private spotifyService: SpotifyServicesService

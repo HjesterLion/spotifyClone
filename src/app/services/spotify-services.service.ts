@@ -63,6 +63,12 @@ export class SpotifyServicesService {
     return params[0].split('=')[1]
   }
 
+  async buscasRecentes(){
+    const artista = await this.buscarTopArtistas(1)
+    const result = await this.spotifyApi.getArtistRelatedArtists(artista.pop().id,)
+    return result.artists.map(e => e.name)
+  }
+
   definirAccessToken(token:string){
     this.spotifyApi.setAccessToken(token)
     localStorage.setItem('token',token)
@@ -78,10 +84,10 @@ export class SpotifyServicesService {
     return artistas.items.map(SpotifyArtistaParaArtista)
 
   }
-  async buscarArtista(id = '6YVMFz59CuY7ngCxTxjpxE'){
-    const artista = await this.spotifyApi.getArtist(id)
-    return artista
-    
+
+  async buscar(busca:string){
+    const resultadoBusca = await this.spotifyApi.search(busca,["album","artist","playlist","track"])
+    console.log(resultadoBusca)
   }
 
   async buscarMusicas(offset = 0, limit= 50):Promise<iMusica[]>{
@@ -108,6 +114,13 @@ export class SpotifyServicesService {
     await this.spotifyApi.skipToNext()
   }
 
+  async play(){
+    await this.spotifyApi.play()
+  }
+  async pause(){
+    await this.spotifyApi.pause()
+  }
+
   async buscarMusicasPlaylist(playlistId:string,offset:number = 0, limit:number = 50){
     const playlistSpotify = await this.spotifyApi.getPlaylist(playlistId)
 
@@ -121,6 +134,23 @@ export class SpotifyServicesService {
     playlist.musicas = musicasSpotify.items.map(e => SpotifyTrackParaMusica(e.track as SpotifyApi.TrackObjectFull))
 
     return playlist   
+  }
+
+  async buscarMusicasArtista(artistaId:string, offset:number=0,limit:number = 50){
+    const artistaSpotify = await this.spotifyApi.getArtist(artistaId)
+
+    const musicasArtistaSpotify = await this.spotifyApi.getArtistTopTracks(artistaId,'BR')
+
+    const artista = SpotifyArtistaParaArtista(artistaSpotify)
+    artista.musicas = musicasArtistaSpotify.tracks.map(e => SpotifyTrackParaMusica(e))
+
+    return artista
+  }
+
+  async obterStatusMusica(){
+    const statusMusica = await this.spotifyApi.getMyCurrentPlaybackState()
+    return statusMusica
+
   }
 
   logout(){

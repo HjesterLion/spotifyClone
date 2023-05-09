@@ -10,6 +10,7 @@ export interface iMusica {
         nome:string,
         imgUrl:string
     },
-    tempo:string
+    tempo:string,
+    play?:boolean
 
 }

@@ -5,7 +5,7 @@
         <span>{{musica.titulo}}</span>
         <div class="botoes">
             <fa-icon [icon]="anteriorIcone" (click)="voltarMusica()"></fa-icon>
-            <fa-icon [icon]="playIcone"></fa-icon>
+            <fa-icon [icon]="playIcone" (click)="playPause()"></fa-icon>
             <fa-icon [icon]="proximoIcone" (click)="proximaMusica()"></fa-icon>
 
         </div>

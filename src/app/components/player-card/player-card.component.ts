@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { faPlay, faStepBackward, faStepForward } from '@fortawesome/free-solid-svg-icons';
+import { faPause, faPlay, faStepBackward, faStepForward } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { newMusica } from 'src/app/common/factories';
 import { iMusica } from 'src/app/interfaces/iMusica';
@@ -29,8 +29,14 @@ export class PlayerCardComponent implements OnInit,OnDestroy{
     
   }
   
-  obterMusicaTocando(){
-     const sub = this.playerService.musicaAtual.subscribe(musica => {
+  async obterMusicaTocando(){
+    const status = await this.playerService.obterStatusMusica()
+    if(status && status.is_playing){
+      this.playIcone = faPause
+    }else{
+      this.playIcone = faPlay
+    }
+    const sub = this.playerService.musicaAtual.subscribe(musica => {
       this.musica = musica
     })
     this.subs.push(sub)
@@ -39,11 +45,27 @@ export class PlayerCardComponent implements OnInit,OnDestroy{
 
   voltarMusica(){
     this.playerService.voltarMusica()
+    this.playIcone = faPause
 
   }
   proximaMusica(){
     this.playerService.proximaMusica()
+    this.playIcone = faPause
 
+  }
+  playPause(){
+    if(this.musica.id == ''){
+      return
+    }
+    if(this.playIcone == faPlay){
+      this.playerService.play()
+      this.playIcone = faPause
+
+    }else{
+      this.playerService.pause()
+      this.playIcone = faPlay
+
+    }
   }
 
 }

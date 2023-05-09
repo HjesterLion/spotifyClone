@@ -34,7 +34,6 @@ export function SpotifyArtistaParaArtista(spotifyArtista: SpotifyApi.ArtistObjec
         imgUrl: spotifyArtista.images.sort((a, b) => a.width - b.width).pop()?.url,
         nome: spotifyArtista.name
     }
-
 }
 
 export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull): iMusica {
