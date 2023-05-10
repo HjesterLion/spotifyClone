@@ -65,18 +65,14 @@ export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull)
             id: e.id,
             nome: e.name
         })),
-        tempo: msParaMinutos(spotifyTrack.duration_ms)
+        tempo: msParaMinutos(spotifyTrack.duration_ms),
+        progressoTotal: spotifyTrack.duration_ms
 
     }
 }
 
 export function SpotifyPesquisa(spotifyPesquisa: SpotifyApi.SearchResponse):iPesquisa{
     return{
-        album: spotifyPesquisa.albums.items.map(e =>({
-            id:e.id,
-            nome:e.name,
-            imgUrl:e.images.pop()?.url,
-        })),
         artista: spotifyPesquisa.artists.items.map(e => ({
             id:e.id,
             nome:e.name,

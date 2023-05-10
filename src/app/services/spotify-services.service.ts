@@ -18,6 +18,7 @@ export class SpotifyServicesService {
   spotifyApi: Spotify.SpotifyWebApiJs = null;
   usuario:iUsuario ;
   pesquisa:iPesquisa 
+  menuSelecionado:string = 'Home';
 
   constructor(
     private router: Router
@@ -92,7 +93,7 @@ export class SpotifyServicesService {
   }
 
   async buscar(busca:string){
-    const resultadoBusca = await this.spotifyApi.search(busca,["album","artist","playlist","track"])
+    const resultadoBusca = await this.spotifyApi.search(busca,["artist","playlist","track"])
     this.pesquisa = SpotifyPesquisa(resultadoBusca)
     return resultadoBusca
 
@@ -111,7 +112,10 @@ export class SpotifyServicesService {
 
   async obeterMusicaAtual():Promise<iMusica>{
     const musica = await this.spotifyApi.getMyCurrentPlayingTrack()
-    return SpotifyTrackParaMusica(musica.item)
+    const resultado = SpotifyTrackParaMusica(musica.item)
+    resultado.progresso = musica.progress_ms
+    
+    return  resultado
   }
 
   async voltarMusica(){

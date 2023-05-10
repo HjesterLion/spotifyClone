@@ -4,6 +4,7 @@
     align-items: center;
     cursor: pointer;
     padding: 5px 0px;
+    border-radius: 5px;
 
     &:hover{
         background-color: $branco;
@@ -11,6 +12,7 @@
     }
 
     img{
+        margin-left: 1vh;
         width: 40px;
         border-radius: 50%;
         flex-grow: 0;

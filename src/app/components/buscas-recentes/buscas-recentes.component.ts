@@ -25,7 +25,6 @@ export class BuscasRecentesComponent implements OnInit {
       const result = await this.spotifyService.buscar(this.campoPesquisa)
       console.log(!!result)
       if(!!result){
-        console.log('caiu')
         this.campoPesquisa = ''
         this.router.navigateByUrl('player/pesquisar')
         this.buscaEvent.emit()

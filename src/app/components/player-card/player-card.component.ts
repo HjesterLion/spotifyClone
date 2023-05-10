@@ -10,16 +10,17 @@ import { PlayerService } from 'src/app/services/player.service';
   templateUrl: './player-card.component.html',
   styleUrls: ['./player-card.component.scss']
 })
-export class PlayerCardComponent implements OnInit,OnDestroy{
+export class PlayerCardComponent implements OnInit, OnDestroy {
 
-  musica:iMusica = newMusica()
-  subs:Subscription[] = []
+  musica: iMusica = newMusica()
+  subs: Subscription[] = []
 
   anteriorIcone = faStepBackward
   proximoIcone = faStepForward
   playIcone = faPlay
-  
-  constructor(private playerService:PlayerService){}
+  artista: any = []
+
+  constructor(private playerService: PlayerService) { }
 
   ngOnInit(): void {
     this.obterMusicaTocando()
@@ -27,44 +28,50 @@ export class PlayerCardComponent implements OnInit,OnDestroy{
   ngOnDestroy(): void {
     this.subs.forEach(sub => sub.unsubscribe())
   }
-  
-  async obterMusicaTocando(){
+
+  async obterMusicaTocando() {
     const status = await this.playerService.obterStatusMusica()
-    if(status && status.is_playing){
+    if (status && status.is_playing) {
       this.playIcone = faPause
-    }else{
+    } else {
       this.playIcone = faPlay
     }
     const sub = this.playerService.musicaAtual.subscribe(musica => {
       this.musica = musica
+      this.artista = musica.artitas.map(e => { return e.nome })
     })
     this.subs.push(sub)
 
   }
 
-  voltarMusica(){
+  voltarMusica() {
     this.playerService.voltarMusica()
     this.playIcone = faPause
 
   }
-  proximaMusica(){
+  proximaMusica() {
     this.playerService.proximaMusica()
     this.playIcone = faPause
 
   }
-  playPause(){
-    if(this.musica.id == ''){
+  playPause() {
+    if (this.musica.id == '') {
       return
     }
-    if(this.playIcone == faPlay){
+    if (this.playIcone == faPlay) {
       this.playerService.play()
       this.playIcone = faPause
 
-    }else{
+    } else {
       this.playerService.pause()
       this.playIcone = faPlay
 
     }
   }
+  progresso() {
+      const progressoPorcentagem = (this.musica.progresso*100)/this.musica.progressoTotal
+      return progressoPorcentagem
 
+
+  }
 }

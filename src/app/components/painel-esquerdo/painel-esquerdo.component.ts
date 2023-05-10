@@ -11,12 +11,8 @@ import { SpotifyServicesService } from 'src/app/services/spotify-services.servic
   styleUrls: ['./painel-esquerdo.component.scss']
 })
 export class PainelEsquerdoComponent implements OnInit, OnDestroy{
-
-  menuSelecionado = 'Home'
-
   playlists:iPlaylist[] = []
   subs:Subscription[]= []
-
 
   homeIcone = faHome;
   pesquisarIcone = faSearch;
@@ -38,9 +34,8 @@ export class PainelEsquerdoComponent implements OnInit, OnDestroy{
     
   }
   botaoClick(botao:string){
-    this.menuSelecionado = botao
+    this.spotifyService.menuSelecionado = botao
     this.router.navigateByUrl(`player/${botao.toLocaleLowerCase()}`)
-
   }
 
   async buscarPlaylist(){
@@ -49,8 +44,11 @@ export class PainelEsquerdoComponent implements OnInit, OnDestroy{
   }
 
   irParaPlaylist(playlistId:string){
-    this.menuSelecionado = playlistId;
+    this.spotifyService.menuSelecionado = playlistId;
     this.router.navigateByUrl(`player/lista/playlist/${playlistId}`)
+  }
+  verificaMenu(playlistId:string){
+    return this.spotifyService.menuSelecionado == playlistId
   }
 
 }

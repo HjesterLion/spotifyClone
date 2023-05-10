@@ -11,6 +11,8 @@ export interface iMusica {
         imgUrl:string
     },
     tempo:string,
-    play?:boolean
+    play?:boolean,
+    progresso?:number,
+    progressoTotal?:number
 
 }

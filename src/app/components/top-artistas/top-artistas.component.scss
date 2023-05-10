@@ -3,8 +3,13 @@
 :host{
     min-height: 270px;
     color: $cor-primaria;
-
+    
+    
     .d-block{
         display:block
+    }
+    .selecionado{
+        border-radius: 5px;
+        background-color: $cor-primaria;
     }
 }

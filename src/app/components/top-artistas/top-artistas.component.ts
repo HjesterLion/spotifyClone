@@ -11,7 +11,6 @@ import { SpotifyServicesService } from 'src/app/services/spotify-services.servic
 export class TopArtistasComponent implements OnInit {
 
   artistas: iArtista[]= []
-  menuSelecionado = 'Home'
 
   constructor(private spotifyService:SpotifyServicesService,private router: Router){}
 
@@ -25,8 +24,12 @@ export class TopArtistasComponent implements OnInit {
 
   }
   async irParaArtista(artistaId: string){
-    this.menuSelecionado = artistaId
+    this.spotifyService.menuSelecionado = artistaId
     this.router.navigateByUrl(`player/lista/artista/${artistaId}`)
+
+  }
+  verificaSelecionado(artistaId:string){
+    return this.spotifyService.menuSelecionado == artistaId
 
   }
 

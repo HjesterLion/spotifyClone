@@ -1,9 +1,11 @@
 <span class="titulo-md">Top 5 Artistas</span>
-    <app-artista-item-imagem class="mt-1" (click)="irParaArtista(artista.id)"
-    *ngFor="let artista of artistas"
-    [imagemSrc]="artista.imgUrl">
+<div [class.selecionado]="verificaSelecionado(artista.id)" *ngFor="let artista of artistas">
+    <app-artista-item-imagem class="mt-1"
+    [imagemSrc]="artista.imgUrl" (click)="irParaArtista(artista.id)">
     {{artista.nome}}
     </app-artista-item-imagem>
+
+</div>
     
     
     

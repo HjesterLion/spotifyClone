@@ -12,4 +12,6 @@ export class PainelDireitoComponent {
     this.buscaEvent.emit()
   }
 
+
+
 }

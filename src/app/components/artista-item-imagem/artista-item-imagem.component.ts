@@ -10,20 +10,11 @@ export class ArtistaItemImagemComponent implements OnInit {
   @Input()
   imagemSrc = '';
 
-  @Input()
-  selecionado = false
-
-  @Output()
-  click = new EventEmitter<void>();
-
 
   constructor(){}
 
   ngOnInit(): void {
     
-  }
-  onClick(){
-    this.click.emit()
   }
 
 }

@@ -3,6 +3,11 @@
     [style.background-image]="'url('+ musica.album.imgUrl +')'"></div>
     <div class="controles">
         <span>{{musica.titulo}}</span>
+        <span>{{artista}}</span>
+        <div class="progress-bar mt-1">
+            <div class="progress" [style.width]="this.progresso()+'%'">
+            </div>
+        </div>
         <div class="botoes">
             <fa-icon [icon]="anteriorIcone" (click)="voltarMusica()"></fa-icon>
             <fa-icon [icon]="playIcone" (click)="playPause()"></fa-icon>
