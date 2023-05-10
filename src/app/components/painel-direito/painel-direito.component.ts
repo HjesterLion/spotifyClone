@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-painel-direito',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./painel-direito.component.scss']
 })
 export class PainelDireitoComponent {
+  @Output() buscaEvent = new EventEmitter()
+
+  emitirEventoFilho(){
+    this.buscaEvent.emit()
+  }
 
 }

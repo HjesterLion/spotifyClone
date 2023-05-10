@@ -1,12 +1,22 @@
+@import '../../../assets/style/table.scss';
+@import '../../../assets/style/variaveis.scss';
+
 :host{
-    display:flex;
+    display: flex;
     justify-content: space-between;
 
-    .painel-direito{
-        height: 100vh;
+    ::-webkit-scrollbar{
+        width: 7px;
+        &-thumb{
+            background-color: rgba($cor-primaria, $alpha: .2);
+            border-radius: 10px;
+        }
+        &-track{
+            background: transparent;
+        }
     }
 
-    .minhas-pesquisas{
+    .meus-artistas{
         padding:0px 50px;
         padding-bottom: 20px;
         width: 100%;
@@ -14,6 +24,22 @@
         overflow-y: scroll;
 
     }
+    .container{
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        .banner{
+            cursor: pointer;
+            width: 49%;
+            margin-left: auto;
+        }
 
-    
+    }
+
+    .painel-direito{
+        height: 100vh;
+    }
+    .d-block{
+        display: block;
+    }
 }

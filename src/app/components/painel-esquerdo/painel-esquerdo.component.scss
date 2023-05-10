@@ -65,6 +65,7 @@ $h-desconsiderar: calc($h-spotify-logo + $h-menu-opcoes + $h-footer-user);
             min-height: $h-spotify-logo;
 
             img {
+                cursor: pointer;
                 width: 70%;
             }
         }

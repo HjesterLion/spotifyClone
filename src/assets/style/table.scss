@@ -7,7 +7,7 @@
     border-collapse: collapse;
 
     .executando{
-        background-color: white;
+        background-color:$cinza;
         padding: 10px;
         box-shadow: 0px 0px 15px $preto-trasparent-30;
         
@@ -24,7 +24,7 @@
     thead th{
         font-size: .75rem;
         font-weight: 600;
-        color: $preto-trasparent-30;
+        color: $cor-primaria;
 
     }
     th,td{
@@ -32,6 +32,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        color: $branco;
 
         &:nth-child(1){
             padding-left: 10px;
@@ -50,7 +51,6 @@
             margin-top: 10px;
             font-weight: 500;
             font-size: .85rem;
-            color:$pretor-trasparent-70;
 
             &:nth-child(1){
                 padding-left: 10px;

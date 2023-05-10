@@ -4,29 +4,31 @@
     input{
         width: 100%;
         padding: 10px 5px;
-        border-color: $preto-trasparent-30;
+        border-color: $branco;
         border-radius: 8px;
         font-size: 1rem;
         outline: none;
         font-weight: 500;
+        background-color: $cinza;
 
         &::placeholder{
-            color:$preto-trasparent-30;
+            color:$branco;
             font-size: .85rem
         }
         &:focus, &:active{
             border-color: $cor-primaria;
             border-width: 2px;
+            color: $branco;
         }
     }
     .sugestoes{
         flex-wrap: wrap;
         
         span{
-            background-color: white;
+            background-color: $cinza;
             margin-right: 5px;
             padding: 5px 10px;
-            color: $pretor-trasparent-70;
+            color: $branco;
             border:1px solid $preto-trasparent-30;
             margin: 10px;
             font-size: .9rem;
@@ -35,7 +37,7 @@
 
             &:hover{
                 background-color: rgba($cor-primaria,.5);
-                color: white;
+                color: $branco;
             }
 
         }

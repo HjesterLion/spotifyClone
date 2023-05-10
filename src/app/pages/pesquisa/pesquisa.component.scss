@@ -1,3 +1,5 @@
+@import '../../../assets/style/table.scss';
+
 @import '../../../assets/style/variaveis.scss';
 
 :host{
@@ -31,18 +33,21 @@
         overflow-y: scroll;
 
     }
-    .teste{
+    .conteiner{
         display: flex;
-        flex-wrap: nowrap;
-        max-width: 60vw;
+        flex-wrap: wrap;
+        max-width: 100vw;
         overflow: hidden;
+        justify-content: center;
 
         .card{
             display: flex;
             flex-direction: column;
-            width: 300px;
+            width: 150px;
             flex-wrap: nowrap;
             cursor: pointer;
+            margin: 10px;
+            background-color: $pretor-trasparent-70;
     
             .imagem{
                 height: 100px;
@@ -52,7 +57,13 @@
                 display: block;
             }
             span{
+                display: inline-block;
                 text-align: center;
+                white-space: nowrap;
+                color:$branco;
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             
             &:hover{

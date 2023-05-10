@@ -12,4 +12,6 @@ export interface iPesquisa {
 
     playlists:iPlaylist[],
 
+    musicas:iMusica[]
+
 }

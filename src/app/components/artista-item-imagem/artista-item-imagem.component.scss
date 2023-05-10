@@ -6,7 +6,7 @@
     padding: 5px 0px;
 
     &:hover{
-        background-color: white;
+        background-color: $branco;
 
     }
 
@@ -16,7 +16,7 @@
         flex-grow: 0;
     }
     span{
-        color: $pretor-trasparent-70;
+        color: $branco;
         flex-grow: 1;
         margin-left: 10px;
         font-weight: 600;
@@ -29,6 +29,6 @@
 
     &.selecionado{
         background-color: $cor-primaria;
-        color: white;
+        color: $branco;
     }
 }

@@ -69,6 +69,12 @@ export class SpotifyServicesService {
     return result.artists.map(e => e.name)
   }
 
+  async buscarArtistasRelacionado(){
+    const topArtista = await this.buscarTopArtistas(1)
+    const result = await this.spotifyApi.getArtistRelatedArtists(topArtista.pop().id)
+    return result.artists.map(SpotifyArtistaParaArtista)
+  }
+
   definirAccessToken(token:string){
     this.spotifyApi.setAccessToken(token)
     localStorage.setItem('token',token)
@@ -86,8 +92,9 @@ export class SpotifyServicesService {
   }
 
   async buscar(busca:string){
-    const resultadoBusca = await this.spotifyApi.search(busca,["album","artist","playlist"])
+    const resultadoBusca = await this.spotifyApi.search(busca,["album","artist","playlist","track"])
     this.pesquisa = SpotifyPesquisa(resultadoBusca)
+    return resultadoBusca
 
   }
 

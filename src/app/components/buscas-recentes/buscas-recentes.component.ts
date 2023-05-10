@@ -11,7 +11,7 @@ export class BuscasRecentesComponent implements OnInit {
   pesquisasRecentes = ['']
   campoPesquisa = ''
 
-  @Output() buscaEvent = new EventEmitter() 
+  @Output() buscaEvent = new EventEmitter()
   
   constructor(private spotifyService:SpotifyServicesService,private router:Router){}
   ngOnInit(): void {
@@ -20,11 +20,18 @@ export class BuscasRecentesComponent implements OnInit {
   definirPesquisa(pesquisa:string){
     this.campoPesquisa = pesquisa
   }
-  buscar(){
-    this.spotifyService.buscar(this.campoPesquisa)
-    this.campoPesquisa = ''
-    this.buscaEvent.emit()
-    // this.router.navigateByUrl('player/pesquisar')
+  async buscar(){
+    if(this.campoPesquisa != ''){
+      const result = await this.spotifyService.buscar(this.campoPesquisa)
+      console.log(!!result)
+      if(!!result){
+        console.log('caiu')
+        this.campoPesquisa = ''
+        this.router.navigateByUrl('player/pesquisar')
+        this.buscaEvent.emit()
+      }
+
+    }
   }
 
   async tocadosRecente(){

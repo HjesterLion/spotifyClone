@@ -87,5 +87,6 @@ export function SpotifyPesquisa(spotifyPesquisa: SpotifyApi.SearchResponse):iPes
             nome:e.name,
             imagUrl:e.images.pop()?.url,
         })),
+        musicas:spotifyPesquisa.tracks.items.map(SpotifyTrackParaMusica)
     }
 }

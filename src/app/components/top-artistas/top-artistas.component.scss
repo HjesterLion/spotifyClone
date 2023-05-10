@@ -1,5 +1,8 @@
+@import '../../../assets/style/variaveis.scss';
+
 :host{
     min-height: 270px;
+    color: $cor-primaria;
 
     .d-block{
         display:block
