@@ -30,15 +30,14 @@ export class PlayerCardComponent implements OnInit, OnDestroy {
   }
 
   async obterMusicaTocando() {
-    const status = await this.playerService.obterStatusMusica()
-    if (status && status.is_playing) {
-      this.playIcone = faPause
-    } else {
-      this.playIcone = faPlay
-    }
     const sub = this.playerService.musicaAtual.subscribe(musica => {
       this.musica = musica
       this.artista = musica.artitas.map(e => { return e.nome })
+      if (this.musica && this.musica.play) {
+        this.playIcone = faPause
+      } else {
+        this.playIcone = faPlay
+      }
     })
     this.subs.push(sub)
 
@@ -46,12 +45,12 @@ export class PlayerCardComponent implements OnInit, OnDestroy {
 
   voltarMusica() {
     this.playerService.voltarMusica()
-    this.playIcone = faPause
+    // this.playIcone = faPause
 
   }
   proximaMusica() {
     this.playerService.proximaMusica()
-    this.playIcone = faPause
+    // this.playIcone = faPause
 
   }
   playPause() {
@@ -60,11 +59,11 @@ export class PlayerCardComponent implements OnInit, OnDestroy {
     }
     if (this.playIcone == faPlay) {
       this.playerService.play()
-      this.playIcone = faPause
+      // this.playIcone = faPause
 
     } else {
       this.playerService.pause()
-      this.playIcone = faPlay
+      // this.playIcone = faPlay
 
     }
   }

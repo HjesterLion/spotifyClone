@@ -114,6 +114,7 @@ export class SpotifyServicesService {
     const musica = await this.spotifyApi.getMyCurrentPlayingTrack()
     const resultado = SpotifyTrackParaMusica(musica.item)
     resultado.progresso = musica.progress_ms
+    resultado.play = musica.is_playing
     
     return  resultado
   }

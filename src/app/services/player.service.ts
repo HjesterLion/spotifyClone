@@ -19,7 +19,6 @@ export class PlayerService {
   async obterMusicaAtual(){
     clearTimeout(this.timerId)
     const musica = await this.spotifyService.obeterMusicaAtual()
-    musica.play = (await this.spotifyService.obterStatusMusica()).is_playing
     this.definirMusicaAtual(musica)
 
     

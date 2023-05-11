@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { SpotifyServicesService } from 'src/app/services/spotify-services.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { SpotifyServicesService } from 'src/app/services/spotify-services.servic
 export class BuscasRecentesComponent implements OnInit {
   pesquisasRecentes = ['']
   campoPesquisa = ''
+  
+  pesquisaIcon = faSearch
 
   @Output() buscaEvent = new EventEmitter()
   
@@ -23,7 +26,6 @@ export class BuscasRecentesComponent implements OnInit {
   async buscar(){
     if(this.campoPesquisa != ''){
       const result = await this.spotifyService.buscar(this.campoPesquisa)
-      console.log(!!result)
       if(!!result){
         this.campoPesquisa = ''
         this.router.navigateByUrl('player/pesquisar')

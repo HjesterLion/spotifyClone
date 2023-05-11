@@ -1,42 +1,71 @@
 @import '../../../assets/style/variaveis.scss';
 
-:host{
-    input{
-        width: 100%;
-        padding: 10px 5px;
-        border-color: $branco;
-        border-radius: 8px;
-        font-size: 1rem;
-        outline: none;
-        font-weight: 500;
+:host {
+    .container-busca {
+        // display: flex;
+        // align-items: center;
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        padding: 5px;
         background-color: $cinza;
+        border-radius: 5px;
+        .selecionado{
+            background-color: red;
+        }
 
-        &::placeholder{
-            color:$branco;
+        span {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            margin-right: 10px;
+            color: $branco;
+            cursor: pointer;
+
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 5px;
+            border-color: $branco;
+            font-size: 1rem;
+            outline: none;
+            font-weight: 500;
+            background-color: $cinza;
+            color: $branco;
+            border: none;
+
+        }
+
+        &::placeholder {
+            color: $branco;
             font-size: .85rem
         }
-        &:focus, &:active{
+
+        &:focus-within,
+        &:active {
             border-color: $cor-primaria;
             border-width: 2px;
-            color: $branco;
+            color: white;
         }
     }
-    .sugestoes{
+
+    .sugestoes {
         flex-wrap: wrap;
-        
-        span{
+
+        span {
             background-color: $cinza;
             margin-right: 5px;
             padding: 5px 10px;
             color: $branco;
-            border:1px solid $preto-trasparent-30;
+            border: 1px solid $preto-trasparent-30;
             margin: 10px;
             font-size: .9rem;
             border-radius: 20px;
             cursor: pointer;
 
-            &:hover{
-                background-color: rgba($cor-primaria,.5);
+            &:hover {
+                background-color: rgba($cor-primaria, .5);
                 color: $branco;
             }
 

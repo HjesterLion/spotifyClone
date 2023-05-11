@@ -46,10 +46,13 @@ export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull)
         const milissegundos = ms;
         const segundos = Math.floor(milissegundos / 1000);
         const minutos = Math.floor(segundos / 60);
-        const segundos_restantes = segundos % 60;
-
-        
-        return `${minutos}:${segundos_restantes}`
+        let segundos_restantes = segundos % 60;
+        if(segundos_restantes.toLocaleString().length == 1){
+        return `${minutos}:${segundos_restantes}0`    
+        }else if(segundos_restantes.toLocaleString().length == 0){
+            return `${minutos}:00`
+        }
+        return `${minutos}:${segundos_restantes}`    
     }
 
 
