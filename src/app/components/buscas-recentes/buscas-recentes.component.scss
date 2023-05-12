@@ -9,10 +9,7 @@
         border: 1px solid #ccc;
         padding: 5px;
         background-color: $cinza;
-        border-radius: 5px;
-        .selecionado{
-            background-color: red;
-        }
+        border-radius: 10px;
 
         span {
             display: flex;
@@ -42,11 +39,12 @@
             font-size: .85rem
         }
 
-        &:focus-within,
-        &:active {
+        &:focus-within,:active{
             border-color: $cor-primaria;
             border-width: 2px;
-            color: white;
+            span,input{
+                color: white;
+            }
         }
     }
 

@@ -23,7 +23,7 @@ export class TopArtistaComponent implements OnInit {
   async buscarArtista(){
     const artistas = await this.spotifyService.buscarTopArtistas()
     if(!!artistas){
-      this.artista = artistas.pop();
+      this.artista = artistas.shift();
     }
   }
   
